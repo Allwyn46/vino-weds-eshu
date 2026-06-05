@@ -1,4 +1,5 @@
 import DoorLoader from './DoorLoader'
+import ScratchCard from './ScratchCard'
 
 const Hero = () => {
     return (
@@ -76,36 +77,43 @@ const Hero = () => {
                             width={'520px'}
                         />
                     </div>
-                    <p className="hero-sub">🌿 An Auspicious Occasion 🌿</p>
-                    <div className="floral-divider">— 🌸 —</div>
-                    <h1 className="hero-names">
-                        <span>T. Vinoth Kumar</span>
-                        <span className="hero-amp">&</span>
-                        <span>P. Rajeshwari</span>
-                    </h1>
-                    <div className="rings-icon">💍</div>
-                    <p className="hero-tagline">
-                        We Invite you to the Engagement Ceremony <br /> and
-                        Share with us A Celebration of Love and Commitment
-                    </p>
-                    <div
-                        className="floral-divider"
-                        style={{ marginTop: '1.5rem' }}
-                    >
-                        — 🌸 🌿 🌸 —
+                    {/* <p className="hero-sub">🌿 An Auspicious Occasion 🌿</p> */}
+                    {/* <div className="floral-divider">— 🌸 —</div> */}
+
+                    <div className="mt-10 hero-test-content w-full">
+                        <h1 className="hero-names">
+                            <span>T. Vinoth Kumar</span>
+                            <span className="hero-amp">&</span>
+                            <span>P. Rajeshwari</span>
+                        </h1>
+                        {/* <div className="rings-icon">💍</div>
+                        <p className="hero-tagline">
+                            We Invite you to the Wedding Ceremony <br /> and
+                            Share with us A Celebration of Love and Commitment
+                        </p>
+                        <div
+                            className="floral-divider"
+                            style={{ marginTop: '1.5rem' }}
+                        >
+                            — 🌸 🌿 🌸 —
+                        </div> */}
+                        <p
+                            style={{
+                                fontFamily: "'Lato', sans-serif",
+                                fontSize: '.8rem',
+                                letterSpacing: '.2em',
+                                textTransform: 'uppercase',
+                                color: 'var(--sage)',
+                                marginTop: '4rem',
+                            }}
+                        >
+                            Sunday, May 31, 2026
+                        </p>
+
+                        <div className="flex justify-center items-center">
+                            <ScratchCard />
+                        </div>
                     </div>
-                    <p
-                        style={{
-                            fontFamily: "'Lato', sans-serif",
-                            fontSize: '.8rem',
-                            letterSpacing: '.2em',
-                            textTransform: 'uppercase',
-                            color: 'var(--sage)',
-                            marginTop: '1rem',
-                        }}
-                    >
-                        Sunday, May 31, 2026
-                    </p>
                 </div>
             </section>
         </>
