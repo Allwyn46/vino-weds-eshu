@@ -810,7 +810,7 @@ body {
     font-family: 'Cormorant Garamond', serif;
 }
 
-.loader {
+/* .loader {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -838,5 +838,52 @@ body {
     height: 100vh;
     display: grid;
     place-items: center;
+    background: #fff7ef;
+} */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    width: 100vw;
+    height: 100dvh;
+
+    overflow: hidden;
+}
+
+.door {
+    position: absolute;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    will-change: transform;
+}
+
+.left-door {
+    left: 0;
+    background-image: url('/leftdoor.png');
+}
+
+.right-door {
+    right: 0;
+    background-image: url('/rightdoor.png');
+}
+
+.hero {
+    width: 100%;
+    height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     background: #fff7ef;
 }

@@ -2,18 +2,21 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 
 export default function DoorLoader() {
-    const leftDoor = useRef(null)
-    const rightDoor = useRef(null)
-    const loader = useRef(null)
+    const leftDoor = useRef<HTMLDivElement | null>(null)
+    const rightDoor = useRef<HTMLDivElement | null>(null)
+    const loader = useRef<HTMLDivElement | null>(null)
 
     const [loaded, setLoaded] = useState(false)
+    const [hidden, setHidden] = useState(false)
 
     useEffect(() => {
-        const handleLoad = () => {
-            setLoaded(true)
-        }
+        const handleLoad = () => setLoaded(true)
 
-        window.addEventListener('load', handleLoad)
+        if (document.readyState === 'complete') {
+            handleLoad()
+        } else {
+            window.addEventListener('load', handleLoad)
+        }
 
         return () => {
             window.removeEventListener('load', handleLoad)
@@ -25,26 +28,43 @@ export default function DoorLoader() {
 
         const tl = gsap.timeline()
 
-        tl.to(leftDoor.current, {
-            x: '-100%',
-            duration: 2,
-            ease: 'power3.inOut',
-        })
+        tl.to(
+            leftDoor.current,
+            {
+                xPercent: -100,
+                duration: 1.8,
+                ease: 'power4.inOut',
+            },
+            0
+        )
             .to(
                 rightDoor.current,
                 {
-                    x: '100%',
-                    duration: 2,
-                    ease: 'power3.inOut',
+                    xPercent: 100,
+                    duration: 1.8,
+                    ease: 'power4.inOut',
                 },
-                '<'
+                0
             )
-            .to(loader.current, {
-                opacity: 0,
-                pointerEvents: 'none',
-                duration: 0.5,
-            })
+            .to(
+                loader.current,
+                {
+                    opacity: 0,
+                    duration: 0.4,
+                    pointerEvents: 'none',
+                    onComplete: () => {
+                        setHidden(true)
+                    },
+                },
+                '-=0.2'
+            )
+
+        return () => {
+            tl.kill()
+        }
     }, [loaded])
+
+    if (hidden) return null
 
     return (
         <div ref={loader} className="loader">
